@@ -55,6 +55,11 @@ public interface Constants {
     String DUBBO_RPC_RESULT_EMPTY = "dubbo has not return value!";
 
     /**
+     * The constant DUBBO_TAG_ROUTE.
+     */
+    String DUBBO_TAG_ROUTE = "Dubbo_Tag_Route";
+
+    /**
      * The constant SOFA_RPC_RESULT.
      */
     String SOFA_RPC_RESULT = "sofa_rpc_result";
@@ -63,6 +68,16 @@ public interface Constants {
      * The constant SOFA_RPC_RESULT_EMPTY.
      */
     String SOFA_RPC_RESULT_EMPTY = "sofa has not return value!";
+
+    /**
+     * The constant TARS_RPC_RESULT.
+     */
+    String TARS_RPC_RESULT = "tars_rpc_result";
+
+    /**
+     * The constant TARS_RPC_RESULT_EMPTY.
+     */
+    String TARS_RPC_RESULT_EMPTY = "tars has not return value!";
 
     /**
      * The constant CLIENT_RESPONSE_RESULT_TYPE.
@@ -78,6 +93,11 @@ public interface Constants {
      * The constant HTTP_TIME_OUT.
      */
     String HTTP_TIME_OUT = "httpTimeOut";
+
+    /**
+     * The constant HTTP_RETRY.
+     */
+    String HTTP_RETRY = "httpRetry";
 
     /**
      * Original response Content-Type attribute name.
@@ -98,6 +118,11 @@ public interface Constants {
      * The constant SOFA_PARAMS.
      */
     String SOFA_PARAMS = "sofa_params";
+
+    /**
+     * The constant TARS_PARAMS.
+     */
+    String TARS_PARAMS = "tars_params";
 
     /**
      * The constant DECODE.
@@ -157,22 +182,22 @@ public interface Constants {
     /**
      * The constant SIGN_PARAMS_ERROR.
      */
-    String SIGN_PARAMS_ERROR = "认证参数传入不完整!";
+    String SIGN_PARAMS_ERROR = "sign parameters are incomplete!";
 
     /**
      * The constant SIGN_APP_KEY_IS_NOT_EXIST.
      */
-    String SIGN_APP_KEY_IS_NOT_EXIST = "认证签名APP_KEY,不存在";
+    String SIGN_APP_KEY_IS_NOT_EXIST = "sign appKey does not exist.";
 
     /**
      * The constant SIGN_PATH_NOT_EXIST.
      */
-    String SIGN_PATH_NOT_EXIST = "认证Key未配置路径获取未匹配";
+    String SIGN_PATH_NOT_EXIST = "you have not configured the sign path.";
 
     /**
      * The constant SIGN_VALUE_IS_ERROR.
      */
-    String SIGN_VALUE_IS_ERROR = "签名值错误！";
+    String SIGN_VALUE_IS_ERROR = "signature value is error!";
 
     /**
      * The constant TIMESTAMP.
@@ -341,6 +366,36 @@ public interface Constants {
      * circuitBreaker automaticTransitionFromOpenToHalfOpenEnabled.
      */
     boolean AUTOMATIC_TRANSITION_FROM_OPEN_TO_HALF_OPEN_ENABLED = false;
+
+    /**
+     * Enable the flow rule.
+     */
+    int SENTINEL_ENABLE_FLOW_RULE = 1;
+
+    /**
+     * Sentinel qps flow grade.
+     */
+    int SENTINEL_QPS_FLOW_GRADE = 1;
+
+    /**
+     * Sentinel flow reject behavior.
+     */
+    int SENTINEL_FLOW_REJECT = 0;
+
+    /**
+     * Enable the degrade rule.
+     */
+    int SENTINEL_ENABLE_DEGRADE_RULE = 1;
+
+    /**
+     * Sentinel response RT degrade rule.
+     */
+    int SENTINEL_RESPONSE_RULE_GRADE = 0;
+
+    /**
+     * default warmup.
+     */
+    int DEFAULT_WARMUP = 10 * 60 * 1000;
 
     /**
      * String q.

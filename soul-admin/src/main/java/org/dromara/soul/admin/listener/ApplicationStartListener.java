@@ -17,15 +17,12 @@
 
 package org.dromara.soul.admin.listener;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.dromara.soul.common.utils.IpUtils;
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 
 /**
@@ -33,15 +30,14 @@ import java.net.UnknownHostException;
  *
  * @author xiaoyu
  */
+@Slf4j
 @Component
 public class ApplicationStartListener implements ApplicationListener<WebServerInitializedEvent> {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationStartListener.class);
 
     @Override
     public void onApplicationEvent(final WebServerInitializedEvent event) {
         int port = event.getWebServer().getPort();
-        final String host = getHost();
+        final String host = IpUtils.getHost();
         final String domain = System.getProperty("soul.httpPath");
         if (StringUtils.isBlank(domain)) {
             SoulDomain.getInstance()
@@ -52,12 +48,4 @@ public class ApplicationStartListener implements ApplicationListener<WebServerIn
         }
     }
 
-    private String getHost() {
-        try {
-            return InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            LOGGER.error("Get host error!", e);
-            return "127.0.0.1";
-        }
-    }
 }

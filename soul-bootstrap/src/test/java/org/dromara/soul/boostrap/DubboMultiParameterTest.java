@@ -17,64 +17,33 @@
 
 package org.dromara.soul.boostrap;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.apache.commons.lang3.tuple.Pair;
-import org.dromara.soul.boostrap.dubbo.ComplexBeanTest;
-import org.dromara.soul.boostrap.dubbo.DubboTest;
-import org.dromara.soul.common.utils.GsonUtils;
 import org.dromara.soul.web.dubbo.DubboMultiParameterResolveServiceImpl;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class DubboMultiParameterTest {
+public final class DubboMultiParameterTest {
 
     private final DubboMultiParameterResolveServiceImpl resolveService = new DubboMultiParameterResolveServiceImpl();
-
+    
     @Test
     public void assertTwoStringParam() {
-        String body = "{\"id\": \"123\",\"name\": \"xiaoyu\"}";
-        String parameterTypes = "java.lang.String,java.lang.String";
+        final String body = "{\"id\": \"123\",\"name\": \"xiaoyu\"}";
+        final String parameterTypes = "java.lang.String,java.lang.String";
         Pair<String[], Object[]> pair = resolveService.buildParameter(body, parameterTypes);
         assertThat(pair.getLeft().length, is(2));
         assertThat(pair.getRight().length, is(2));
     }
-
+    
     @Test
     public void assertArrayAndString() {
-        String body = "{\"ids\":[\"123\",\"456\"],\"name\":\"hello world\"}\n";
-        String parameterTypes = "java.lang.Integer[],java.lang.String";
+        final String body = "{\"ids\":[\"123\",\"456\"],\"name\":\"hello world\"}\n";
+        final String parameterTypes = "java.lang.Integer[],java.lang.String";
         Pair<String[], Object[]> pair = resolveService.buildParameter(body, parameterTypes);
         assertThat(pair.getLeft().length, is(2));
         assertThat(pair.getRight().length, is(2));
-    }
-
-    /**
-     * Main.
-     *
-     * @param args args
-     */
-    public static void main(final String[] args) {
-        ComplexBeanTest complexBeanTest = new ComplexBeanTest();
-        DubboTest test = new DubboTest();
-        test.setId("123");
-        test.setName("xiaoyu");
-        List<String> idList = new ArrayList<>();
-        idList.add("456");
-        idList.add("789");
-
-        Map<String, String> idMap = new HashMap<>();
-        idMap.put("id1", "1");
-        idMap.put("id2", "2");
-        complexBeanTest.setDubboTest(test);
-        complexBeanTest.setIdLists(idList);
-        complexBeanTest.setIdMaps(idMap);
-        String json = GsonUtils.getInstance().toJson(complexBeanTest);
-        System.out.println(json);
     }
 }
 

@@ -9,6 +9,10 @@
 </p>
 
 <p align="center">
+  English | <a href="https://github.com/dromara/soul/blob/master/README_CN.md">简体中文</a>
+</p>
+
+<p align="center">
     <a target="_blank" href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.dromara%22%20AND%soul">
         <img src="https://img.shields.io/maven-central/v/org.dromara/soul.svg?label=maven%20central" />
     </a>
@@ -19,7 +23,7 @@
         <img src="https://img.shields.io/badge/JDK-8+-green.svg" />
     </a>
     <a target="_blank" href="https://github.com/dromara/soul">
-        <img src="https://github.com/dromara/soul/workflows/build/badge.svg" />
+        <img src="https://github.com/dromara/soul/workflows/ci/badge.svg" />
     </a>
     <a href="https://www.codacy.com/app/yu199195/soul?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Dromara/soul&amp;utm_campaign=Badge_Grade">
         <img src="https://api.codacy.com/project/badge/Grade/4367ffad5b434b7e8078b3a68cc6398d"/>
@@ -61,37 +65,37 @@
   
 # Modules
 
- * soul-admin : Plug-in and other information configuration management background
+ * soul-admin : plugins and other information configuration management background
  
- * soul-bootstrap : With the startup project, users can refer to
+ * soul-bootstrap : with the startup project, users can refer to
  
- * soul-client : User fast access with springMvc,dubbo,springCloud
+ * soul-client : user fast access with Spring MVC, Dubbo, Spring Cloud.
   
- * soul-common : Framework common class
+ * soul-common : framework common class
  
  * soul-dist : build project
 
  * soul-metrics : metrics impl by prometheus.
  
- * soul-plugin : soul provider plugin collection.
+ * soul-plugin : Soul provider plugin collection.
  
- * soul-spi : soul spi define.
+ * soul-spi : Soul spi define.
  
- * soul-spring-boot-starter : Support for the spring boot starter
+ * soul-spring-boot-starter : support for the spring boot starter
  
- * soul-sync-data-center : provider zookeeper, http, websocket, nacos to sync data
+ * soul-sync-data-center : provider ZooKeeper, HTTP, WebSocket, Nacos to sync data
  
- * soul-test : the rpc test project
+ * soul-examples : the RPC examples project
  
- * soul-web : Core processing packages include plug-ins, request routing and forwarding, and so on
+ * soul-web : core processing packages including plugins, request routing and forwarding, and so on
  
 --------------------------------------------------------------------------------   
  
 # Features
 
-   * It provides plugins such as current limiting, fusing, forwarding, routing monitoring and so on.
+   * Soul provides plugins such as current limiting, fusing, forwarding, routing monitoring and so on.
    
-   * Seamless docking with HTTP,Restful,websocket,dubbo and springcloud.
+   * Seamless docking with HTTP, RESTful, WebSocket, Dubbo and Spring Cloud.
    
    * Plug-in hot plug, users can customize the development.
    
@@ -99,19 +103,19 @@
 
    * Support for cluster deployment.
    
-   * Support A/B test and grayscale publishing。
+   * Support A/B test and grayscale publishing.
    
 --------------------------------------------------------------------------------  
  
 # Plugin
 
- Whenever a request comes in ,Soul Execute all open plug-ins through the chain of responsibility.
+ Whenever a request comes in, Soul executes all open plugins through the chain of responsibility.
  
- Plugins are the heart of soul And plug-ins are extensible and hot-pluggable.
+ As the heart of Soul, plugins are extensible and hot-pluggable.
  
- Different plug-ins do different things 
+ Different plugins do different things.
  
- Of course, users can also customize plug-ins to meet their own needs.
+ Of course, users can also customize plugins to meet their own needs.
  
  If you want to customize, see [plugin-extend](https://dromara.org/website/zh-cn/docs/soul/extend.html)
  
@@ -131,11 +135,9 @@
    
 # Data Caching & Data Sync
  
-  All data is cached ConcurrentHashMap in the JVM So it's very fast.
+  All data have been cached using ConcurrentHashMap in the JVM, so it's very fast.
   
-  When the user is managing changes in the background,
-  
-  Soul dynamically updates the cache by listening to the zookeeper node, websocket push,http longPull.
+  When the user is managing changes in the background, Soul dynamically updates the cache by listening to the ZooKeeper node, WebSocket push, HTTP longPull.
   
   ![](https://yu199195.github.io/images/soul/soul-config-processor.png)
   
@@ -147,13 +149,13 @@
  
    * JDK 1.8+
    
-   * Mysql
+   * MySQL
    
 --------------------------------------------------------------------------------     
    
 # About
   
-   Soul Has been used in our production environment,Its performance and flexibility allow us to use up very cool.
+   Soul has been used in our production environment,its performance and flexibility allow us to use up very cool.
    
    In double 11, we deployed 6 clusters, which supported a large volume of our business.
    
@@ -186,51 +188,58 @@
 
 # Known Users
 
-In order of registration, More access companies are welcome to register at[https://github.com/Dromara/soul/issues/68](https://github.com/Dromara/soul/issues/68) (For open source users only)
+In order of registration, More access companies are welcome to register at [https://github.com/Dromara/soul/issues/68](https://github.com/Dromara/soul/issues/68) (For open source users only)
 
 <table>
   <tbody>
     <tr>
-      <td><img src="https://yu199195.github.io/images/soul/users/sibu.jpg"  width="1800" height="90" alt="思埠集团"/>
-      <td><img src="https://yu199195.github.io/images/soul/users/keking.png"  width="1800" height="90" alt="凯京集团"/>
-      <td><img src="https://yu199195.github.io/images/soul/users/caibeike.png"  width="1800" height="90" alt="彩贝壳"/>
-      <td><img src="https://yu199195.github.io/images/soul/users/jiangsuyonggang.jpg"  width="1800" height="90" alt="江苏永钢集团"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/joyy.png"  width="1800" height="90" alt="yy"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/mihoyo.jpg"  width="1800" height="90" alt="mihoyo"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/keking.png"  width="1800" height="90" alt="kk group"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/shansong.jpg"  width="1800" height="90" alt="shansong"/>
     </tr>
   </tbody>
-   <tbody>
-       <tr>
-         <td><img src="https://yu199195.github.io/images/soul/users/fangfutong.png"  width="1800" height="90" alt="上海方付通科技有限公司"/>
-         <td><img src="https://yu199195.github.io/images/soul/users/lixiang.jpg"  width="1800" height="90" alt="上海理想信息产业集团有限公司"/>
-         <td><img src="https://yu199195.github.io/images/soul/users/kaipuyun.png"  width="1800" height="90" alt="彩贝壳"/>
-         <td><img src="https://yu199195.github.io/images/soul/users/songda.png"  width="1800" height="90" alt="江苏永钢集团"/>
-       </tr>
-    </tbody>
-    <tbody>
-           <tr>
-             <td><img src="https://yu199195.github.io/images/soul/users/aoyou.jpg"  width="1800" height="90" alt="浙江翱游科技有限公司"/>
-             <td><img src="https://yu199195.github.io/images/soul/users/cheyipai.jpg"  width="1800" height="90" alt="车易拍(北京)汽车技术服务有限公司"/>
-             <td><img src="https://yu199195.github.io/images/soul/users/caomao.jpg"  width="1800" height="90" alt="上海草帽科技"/>
-             <td><img src="https://yu199195.github.io/images/soul/users/zuyun.jpg"  width="1800" height="90" alt="深圳竹云科技有限公司"/>
-           </tr>
-     </tbody>
-      <tbody>
-                <tr>
-                  <td><img src="https://yu199195.github.io/images/soul/users/hezhi.png"  width="1800" height="90" alt="深圳盒知科技"/>
-                  <td><img src="https://yu199195.github.io/images/soul/users/qidianyun.jpg"  width="1800" height="90" alt="杭州奇点云科技"/>
-                  <td><img src="https://yu199195.github.io/images/soul/users/wanwei.gif"  width="1800" height="90" alt="万威科技"/>
-                  <td><img src="https://yu199195.github.io/images/soul/users/wuyiyuntong.jpg"  width="1800" height="90" alt="武汉物易云通网络科技有限公司"/>
-                </tr>
-      </tbody>
-      <tbody>
-                <tr>
-                  <td><img src="https://yu199195.github.io/images/soul/users/haokangzaijia.jpg"  width="1800" height="90" alt="好慷在家"/>
-                  <td><img src="https://yu199195.github.io/images/soul/users/shansong.jpg"  width="1800" height="90" alt="闪送科技"/>
-                  <td><img src="https://yu199195.github.io/images/soul/users/guojiadianwang.jpg"  width="1800" height="90" alt="国家电网"/>
-                  <td><img src="https://yu199195.github.io/images/soul/users/caissa.jpg"  width="1800" height="90" alt="凯撒旅游"/>
-                </tr>
-      </tbody>     
+  <tbody>
+    <tr>
+      <td><img src="https://yu199195.github.io/images/soul/users/sibu.jpg"  width="1800" height="90" alt="sibu group"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/guojiadianwang.jpg"  width="1800" height="90" alt="guojiadianwang"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/caibeike.png"  width="1800" height="90" alt="caibeike"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/jiangsuyonggang.jpg"  width="1800" height="90" alt="jiangsuyonggang"/>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td><img src="https://yu199195.github.io/images/soul/users/fangfutong.png"  width="1800" height="90" alt="fangfutong"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/lixiang.jpg"  width="1800" height="90" alt="lixiang"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/kaipuyun.png"  width="1800" height="90" alt="kaipuyun"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/songda.png"  width="1800" height="90" alt="songda"/>
+     </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td><img src="https://yu199195.github.io/images/soul/users/aoyou.jpg"  width="1800" height="90" alt="aoyou"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/cheyipai.jpg"  width="1800" height="90" alt="cheyipai"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/caomao.jpg"  width="1800" height="90" alt="caomao"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/zuyun.jpg"  width="1800" height="90" alt="zuyun"/>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td><img src="https://yu199195.github.io/images/soul/users/hezhi.png"  width="1800" height="90" alt="hezhi"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/qidianyun.jpg"  width="1800" height="90" alt="qidianyun"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/wanwei.gif"  width="1800" height="90" alt="wanwei"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/wuyiyuntong.jpg"  width="1800" height="90" alt="wuyiyuntong"/>
+    </tr>            
+  </tbody>
+  <tbody>
+    <tr>
+      <td><img src="https://yu199195.github.io/images/soul/users/haokangzaijia.jpg"  width="1800" height="90" alt="haokangzaijia"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/caissa.jpg"  width="1800" height="90" alt="caissa"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/deepBule.png"  width="1800" height="90" alt="deepBule"/>
+      <td><img src="https://yu199195.github.io/images/soul/users/anka.png"  width="1800" height="90" alt="anka"/>
+    </tr>
+  </tbody>     
 </table>
-
 
 # Support  
 
@@ -243,7 +252,7 @@ In order of registration, More access companies are welcome to register at[https
   <tbody>
     <tr>
       <td><img src="https://yu199195.github.io/images/public.jpg"   alt="微信公众号"/>
-      <td><img src="https://yu199195.github.io/images/soul-qq.png"  alt="QQ交流群"/>
+      <td><img src="https://yu199195.github.io/images/soul-qq.png"  alt="QQ 交流群"/>
       <td><img src="http://www.iocoder.cn/images/common/erweima.jpg"  alt="芋道源码"/>
     </tr>
   </tbody>

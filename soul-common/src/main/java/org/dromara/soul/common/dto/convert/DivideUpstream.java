@@ -17,6 +17,7 @@
 
 package org.dromara.soul.common.dto.convert;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
@@ -26,9 +27,11 @@ import java.io.Serializable;
  * this is divide upstream.
  *
  * @author xiaoyu(Myth).
+ * @author nuo-promise
  */
 @Data
 @ToString
+@Builder
 public class DivideUpstream implements Serializable {
 
     /**
@@ -50,5 +53,21 @@ public class DivideUpstream implements Serializable {
      * weight.
      */
     private int weight;
+
+    /**
+     * false close/ true open.
+     */
+    @Builder.Default
+    private boolean status = true;
+
+    /**
+     * starup time.
+     */
+    private long timestamp;
+
+    /**
+     * warmup.
+     */
+    private int warmup;
 
 }

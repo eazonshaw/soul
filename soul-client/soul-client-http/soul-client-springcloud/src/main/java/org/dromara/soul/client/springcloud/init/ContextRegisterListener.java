@@ -19,14 +19,15 @@ package org.dromara.soul.client.springcloud.init;
 
 import lombok.extern.slf4j.Slf4j;
 import org.dromara.soul.client.common.utils.OkHttpTools;
+import org.dromara.soul.client.common.utils.RegisterUtils;
 import org.dromara.soul.client.springcloud.config.SoulSpringCloudConfig;
 import org.dromara.soul.client.springcloud.dto.SpringCloudRegisterDTO;
+import org.dromara.soul.client.springcloud.utils.ValidateUtils;
+import org.dromara.soul.common.enums.RpcTypeEnum;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.env.Environment;
 
-import java.io.IOException;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -36,7 +37,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Slf4j
 public class ContextRegisterListener implements ApplicationListener<ContextRefreshedEvent> {
 
-    private volatile AtomicBoolean registered = new AtomicBoolean(false);
+    private final AtomicBoolean registered = new AtomicBoolean(false);
 
     private final String url;
 
@@ -51,17 +52,10 @@ public class ContextRegisterListener implements ApplicationListener<ContextRefre
      * @param env    the env
      */
     public ContextRegisterListener(final SoulSpringCloudConfig config, final Environment env) {
-        String contextPath = config.getContextPath();
-        String adminUrl = config.getAdminUrl();
-        String appName = env.getProperty("spring.application.name");
-        if (contextPath == null || "".equals(contextPath)
-                || adminUrl == null || "".equals(adminUrl)
-                || appName == null || "".equals(appName)) {
-            throw new RuntimeException("spring cloud param must config the contextPath, adminUrl and appName");
-        }
+        ValidateUtils.validate(config, env);
         this.config = config;
         this.env = env;
-        this.url = adminUrl + "/soul-client/springcloud-register";
+        this.url = config.getAdminUrl() + "/soul-client/springcloud-register";
     }
 
     @Override
@@ -70,35 +64,22 @@ public class ContextRegisterListener implements ApplicationListener<ContextRefre
             return;
         }
         if (config.isFull()) {
-            post(buildJsonParams(config.getContextPath()));
+            RegisterUtils.doRegister(buildJsonParams(), url, RpcTypeEnum.SPRING_CLOUD);
         }
     }
 
-    private void post(final String json) {
-        try {
-            String result = OkHttpTools.getInstance().post(url, json);
-            if (Objects.equals(result, "success")) {
-                log.info("http context register success :{} ", json);
-            } else {
-                log.error("http context register error :{} ", json);
-            }
-        } catch (IOException e) {
-            log.error("cannot register soul admin param :{}", url + ":" + json);
-        }
-    }
-
-    private String buildJsonParams(final String contextPath) {
-
+    private String buildJsonParams() {
+        String contextPath = config.getContextPath();
         String appName = env.getProperty("spring.application.name");
         String path = contextPath + "/**";
         SpringCloudRegisterDTO registerDTO = SpringCloudRegisterDTO.builder()
                 .context(contextPath)
                 .appName(appName)
                 .path(path)
-                .rpcType("springCloud")
+                .rpcType(RpcTypeEnum.SPRING_CLOUD.getName())
                 .enabled(true)
                 .ruleName(path)
                 .build();
-        return OkHttpTools.getInstance().getGosn().toJson(registerDTO);
+        return OkHttpTools.getInstance().getGson().toJson(registerDTO);
     }
 }

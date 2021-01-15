@@ -30,11 +30,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComplexBeanTest implements Serializable {
+public final class ComplexBeanTest implements Serializable {
 
     private DubboTest dubboTest;
-
+    
     private List<String> idLists;
-
+    
     private Map<String, String> idMaps;
 }
